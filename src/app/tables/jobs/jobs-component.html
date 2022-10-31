@@ -1,0 +1,48 @@
+<div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+   <mat-card>
+      <div class="gene-card-title">
+         <div fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayout="column">
+               <h4>Jobs Listing</h4>
+            </div> <span fxFlex></span>
+         </div>
+         <mat-divider></mat-divider>
+      </div>
+      <div class="gene-card-content pad-t-none">
+         <div class="table-responsive">
+            <table class="table table-hover table-middle th-fw-light mb-0">
+               <thead>
+                  <tr>
+                     <th>Image</th>
+                     <th>Job Title</th>
+                     <th>Category</th>
+                     <th>Sub Category</th>
+                     <th>Country</th>
+                     <th>City</th>
+                     <th>Region</th>
+                     <th>Experience Required</th>
+                     <th>Qualification Required</th>
+                     <th>Salary</th>
+                     <th>Job Requirements</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr *ngFor="let data of jobsTable">
+                     <td><span><p style="color:red"*ngIf="!data.categories">Not Provided</p></span><img *ngIf="data.categories.category_icon" src="{{data.categories.category_icon}}"  width="50" height="50" class="img-fluid img-circle"></td>
+                     <td>{{data.job_title}}</td>
+                     <td>{{data.categories.name}}</td>
+                     <td>{{data.sub_categories.name}}</td>
+                     <td>{{data.countries.name}}</td>
+                     <td>{{data.cities.name}}</td>
+                     <td>{{data.regions.name}}</td>
+                     <td>{{data.experience}}-years</td>
+                     <td>{{data.qualification}}</td>
+                     <td>{{data.salary}}</td>
+                     <td>{{data.requirements}}</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </mat-card>
+</div>

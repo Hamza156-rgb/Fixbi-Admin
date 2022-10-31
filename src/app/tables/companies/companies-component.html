@@ -1,0 +1,101 @@
+<div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+   <mat-card>
+      <div class="gene-card-title">
+         <div fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayout="column">
+               <h4>Companies</h4>
+            </div> <span fxFlex></span>
+            <button mat-raised-button color="primary"  (click)="addNewCopmany()">Add New Company</button>
+         </div>
+         <mat-divider></mat-divider>
+      </div>
+      <div class="gene-card-content pad-t-none">
+         <div class="table-responsive">
+            <table class="table table-hover table-middle th-fw-light mb-0">
+               <thead>
+                  <tr>
+                     <!-- <th>User Thumb</th>
+                     <th>Name</th>
+                     <th>Status</th>
+                     <th>User-Name</th>
+                     <th>User-ID</th>
+                     <th>Date Joined</th> -->
+                     <th>Image</th>
+                     <th>Company Name</th>
+                     <th>Phone</th>
+                     <th>Email</th>
+                     <th>Description</th>
+                     <th>Portfolio</th>
+                     <th>Country</th>
+                     <th>City</th>
+                     <th>Region</th>
+                     <th>Category</th>
+                     <th>Sub Category</th>
+                     <th>Tax Number</th>
+                     <th>Jobs</th>
+                     <th>Status</th>
+                     <th>Change Status</th>
+                     <th>Add To Featured Providers</th>
+                     <th>Actions</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <!-- <tr *ngFor="let data of ProvidersTable">
+                     <td><img src="{{data.image}}" width="50" height="50" class="img-fluid img-circle" alt="User Image"></td>
+                     <td>{{data.name}}</td>
+                     <td><span class="badge badge-success rounded">{{data.status}}</span> </td>
+                     <td>{{data.user_name}}</td>
+                     <td>{{data.user_id}}</td>
+                     <td>{{data.date_joined}}</td>
+                     <td>
+                        <ng-container *ngFor="let icons of  data.rating">
+                           <i class="{{icons}}" aria-hidden="true"></i>
+                        </ng-container>
+                     </td>
+                     <td><a href="javascript:void(0)" *ngFor="let icons of data.action">
+                        <i class="{{icons}}"></i></a>
+                     </td>
+                  </tr> -->
+                  <tr *ngFor="let data of providersTable">
+                     <td><span><p style="color:red"*ngIf="!data.profile_picture">Not Provided</p></span><img *ngIf="data.profile_picture" src="{{data.profile_picture}}"  width="50" height="50" class="img-fluid img-circle"></td>
+                     <td>{{data.company_name}}</td>
+                     <td>{{data.phone}}</td>
+                     <td>{{data.email}}</td>
+                     <td>{{data.description}}</td>
+                     <td> 
+                        <button mat-raised-button color="primary" *ngIf="data.portfolio" (click)="viewPdf(data.portfolio)">View PDF</button>
+                        <p style="color:red"*ngIf="!data.portfolio">Not Provided</p>
+                    </td>
+                    <td><span *ngFor="let country of data.country" >{{country.name}}<br></span></td>
+                    <td><span *ngFor="let city of data.city" >{{city.name}}<br></span></td>
+                     <td><span *ngFor="let region of data.region" >{{region.name}}<br></span></td>
+                     <td><span *ngFor="let category of data.category">{{category.name}}</span> </td>
+                     <td><span *ngFor="let sub_category of data.sub_category">{{sub_category.name}}<br></span> </td>
+                     <td *ngIf="data.tax_number">{{data.tax_number}}</td>
+                     <td *ngIf="!data.tax_number">Tax Number not provided</td>
+                     <td *ngIf="data.jobs">{{data.jobs}}</td>
+                     <td *ngIf="!data.jobs">No data about jobs</td>
+                     <td *ngIf=" data.is_active == 1">
+                       Active
+                     </td>
+                     <td *ngIf=" data.is_active == 0">
+                        Deactive
+                      </td>
+                      <td>
+                        <button mat-raised-button color="primary"  (click)="changeStatus(data.user_id, data.is_active)">Change</button>
+                     </td>
+                      <td>
+                        <button mat-raised-button color="primary"  (click)="addFeaturedProvider(data.user_id)">Add</button>
+                     </td>
+                     <td>
+                       <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="warn" (click)="deleteCompany(data.user_id)">
+                           <mat-icon aria-label="Delete">delete</mat-icon>
+                         </button>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </mat-card>
+</div>

@@ -1,0 +1,39 @@
+<div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+   <mat-card>
+      <div class="gene-card-title">
+         <div fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayout="column">
+               <h4>Featured Providers</h4>
+            </div> <span fxFlex></span>
+         </div>
+         <mat-divider></mat-divider>
+      </div>
+      <div class="gene-card-content pad-t-none">
+         <div class="table-responsive">
+            <table class="table table-hover table-middle th-fw-light mb-0">
+               <thead>
+                  <tr>
+                     <th>Image</th>
+                     <th>Name</th>
+                     <th>Email</th>
+                     <th>Member Since</th>
+                     <th>Delete Featured Provider</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr *ngFor="let data of providersTable">
+                     <td><span><p style="color:red"*ngIf="!data.profile_picture">Not Provided</p></span><img *ngIf="data.profile_picture" src="{{data.profile_picture}}"  width="50" height="50" class="img-fluid img-circle"></td>
+                     <td *ngIf="data.first_name">{{data.first_name}}</td>
+                     <td *ngIf="data.company_name">{{data.company_name}}</td>
+                     <td>{{data.email}}</td>
+                     <td>{{data.created_at}}</td>
+                     <td> <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="warn" (click)="deleteFeaturedProvider(data.user_id)">
+                        <mat-icon aria-label="Delete">delete</mat-icon>
+                      </button></td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </mat-card>
+</div>

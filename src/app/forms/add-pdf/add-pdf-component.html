@@ -1,0 +1,26 @@
+<div fxLayout="row wrap" fxLayoutAlign=" start" class="gene-form-wizard">
+   <mat-card fxFlex="100%">
+      <div class="gene-card-title">
+         <div fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayout="column">
+               <h4>Add New PDF File</h4>
+            </div> <span fxFlex></span>
+         </div>
+         <mat-divider></mat-divider>
+      </div>
+      <div class="gene-card-content">
+         <form [formGroup]="form">
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                  <input type="file"  name="myFile" (change)="fileEvent($event)"/>
+               </div>
+            </div>
+            <div class="pad-wrap">
+               <mat-card-actions>
+                  <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid" (click)="onSubmit()">Submit</button>
+               </mat-card-actions>
+            </div>
+         </form>
+      </div>
+   </mat-card>
+</div>

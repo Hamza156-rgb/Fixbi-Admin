@@ -1,0 +1,41 @@
+<div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+   <mat-card>
+      <div class="gene-card-title">
+         <div fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayout="column">
+               <h4>{{'Categories'|translate}}</h4>
+            </div> <span fxFlex></span>
+            <button mat-raised-button color="primary"  (click)="addNewCategory()">Add New Category</button>
+
+         </div>
+         <mat-divider></mat-divider>
+      </div>
+      <div class="gene-card-content pad-t-none">
+         <div class="table-responsive">
+            <table class="table table-hover table-middle th-fw-light mb-0">
+               <thead>
+                  <tr>
+                     <th>Category Image</th>
+                     <th>Name</th>
+                     <th>Actions</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr *ngFor="let data of categories">
+                     <td><span><p style="color:red"*ngIf="!data.category_icon">Not Provided</p></span><img *ngIf="data.category_icon" src="{{data.category_icon}}"  width="50" height="50" class="img-fluid img-circle"></td>
+                     <td>{{data.name}}</td>
+                     <td>
+                        <button mat-icon-button matTooltip="Click to Edit" class="iconbutton" color="primary" (click)="editCategory(data.id)">
+                           <mat-icon aria-label="Edit">edit</mat-icon>
+                         </button>
+                       <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="warn" (click)="deleteCategory(data.id)">
+                           <mat-icon aria-label="Delete">delete</mat-icon>
+                         </button>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </mat-card>
+</div>

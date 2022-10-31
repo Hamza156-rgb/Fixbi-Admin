@@ -1,0 +1,86 @@
+<div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+   <mat-card>
+      <div class="gene-card-title">
+         <div fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayout="column">
+               <h4>Customers</h4>
+            </div> <span fxFlex></span>
+            <button mat-raised-button color="primary"  (click)="addNewCustomer()">Add New Customer</button>
+         </div>
+         <mat-divider></mat-divider>
+      </div>
+      <div class="gene-card-content pad-t-none">
+         <div class="table-responsive">
+            <table class="table table-hover table-middle th-fw-light mb-0">
+               <thead>
+                  <tr>
+                     <!-- <th>User Thumb</th>
+                     <th>Name</th>
+                     <th>Status</th>
+                     <th>User-Name</th>
+                     <th>User-ID</th>
+                     <th>Date Joined</th> -->
+                     <th>Image</th>
+                     <th>First Name</th>
+                     <th>Last Name</th>
+                     <th>Phone</th>
+                     <th>Email</th>
+                     <th>Status</th>
+                     <th>Change Status</th>
+                     <th>Actions</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <!-- <tr *ngFor="let data of CustomersTable">
+                     <td><img src="{{data.image}}" width="50" height="50" class="img-fluid img-circle" alt="User Image"></td>
+                     <td>{{data.name}}</td>
+                     <td><span class="badge badge-success rounded">{{data.status}}</span> </td>
+                     <td>{{data.user_name}}</td>
+                     <td>{{data.user_id}}</td>
+                     <td>{{data.date_joined}}</td>
+                     <td>
+                        <ng-container *ngFor="let icons of  data.rating">
+                           <i class="{{icons}}" aria-hidden="true"></i>
+                        </ng-container>
+                     </td>
+                     <td><a href="javascript:void(0)" *ngFor="let icons of data.action">
+                        <i class="{{icons}}"></i></a>
+                     </td>
+                  </tr> -->
+                  <tr *ngFor="let data of CustomersTable">
+                     <td><span><p style="color:red"*ngIf="!data.profile_picture">Not Provided</p></span><img *ngIf="data.profile_picture" src="{{data.profile_picture}}"  width="50" height="50" class="img-fluid img-circle"></td>
+                     <td>{{data.first_name}}</td>
+                     <td>{{data.last_name}}</td>
+                     <td><span class="badge badge-success rounded">{{data.phone}}</span> </td>
+                     <td>{{data.email}}</td>
+                     <td *ngIf=" data.is_active == 1">
+                       Active
+                        <!-- <mat-form-field appearance="outline">
+                           <select matNativeControl [disabled]="">
+                             <option value="Activate" selected>Activate</option>
+                             <option value="Deactivate">Deactivate</option>
+                           </select>
+                         </mat-form-field> -->
+                     </td>
+                     <td *ngIf=" data.is_active == 0">
+                        Deactive
+                      </td>
+                      <td><button mat-raised-button color="primary"  (click)="changeStatus(data.user_id, data.is_active)">Change</button></td>
+                     <td>
+                        <!-- <button mat-icon-button matTooltip="Click to Edit" class="iconbutton" color="primary" (click)="editCustomer(data)">
+                           <mat-icon aria-label="Edit">edit</mat-icon>
+                         </button> -->
+                       <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="warn" (click)="deleteCustomer(data.user_id)">
+                           <mat-icon aria-label="Delete">delete</mat-icon>
+                         </button>
+                     </td>
+                     <!-- <td><a href="javascript:void(0)" *ngFor="let icons of data.action">
+                        <i class="{{icons}}"></i></a>
+                     </td> -->
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </mat-card>
+</div>

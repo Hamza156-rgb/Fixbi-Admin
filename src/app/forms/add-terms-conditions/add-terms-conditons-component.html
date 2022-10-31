@@ -1,0 +1,65 @@
+<div fxLayout="row wrap" fxLayoutAlign=" start" class="gene-form-wizard">
+   <mat-card fxFlex="100%">
+      <div class="gene-card-title">
+         <div fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayout="column">
+               <h4>Add New Terms And Conditions</h4>
+            </div> <span fxFlex></span>
+         </div>
+         <mat-divider></mat-divider>
+      </div>
+      <div class="gene-card-content">
+         <form [formGroup]="form">
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                  <mat-form-field class="full-wid mrgn-b-md">
+                     <input matInput placeholder="Image Text" formControlName="title">
+                  </mat-form-field>
+                  <small class="gene-block" *ngIf="form.controls['title'].hasError('required') && form.controls['title'].touched"
+                     class="warn-text">
+                     You must include a Title.
+                  </small>
+                  <small class="gene-block" *ngIf="form.controls['title'].hasError('minlength') && form.controls['title'].touched"
+                     class="warn-text">
+                     Your first name must be at least 5 characters long.
+                  </small>
+                  <small class="gene-block" *ngIf="form.controls['title'].hasError('maxlength') && form.controls['title'].touched"
+                     class="warn-text">
+                     Your first name cannot exceed 200 characters.
+                  </small>
+               </div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                  <mat-label>Description</mat-label>
+                  <textarea matInput formControlName="description" rows="15"></textarea>
+                  <small class="gene-block" *ngIf="form.controls['description'].hasError('required') && form.controls['description'].touched"
+                  class="warn-text">
+                  You must include a description.
+               </small>
+               <small class="gene-block" *ngIf="form.controls['description'].hasError('minlength') && form.controls['description'].touched"
+                  class="warn-text">
+                  Your first name must be at least 5 characters long.
+               </small>
+               <small class="gene-block" *ngIf="form.controls['description'].hasError('maxlength') && form.controls['description'].touched"
+                  class="warn-text">
+                  Your first name cannot exceed 200 characters.
+               </small>
+               </div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                 
+                  <input type="file"  name="myFile" (change)="fileEvent($event)"/>
+                 
+               </div>
+            </div>
+            <div class="pad-wrap">
+               <mat-card-actions>
+                  <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid" (click)="onSubmit()">Submit</button>
+               </mat-card-actions>
+            </div>
+         </form>
+      </div>
+   </mat-card>
+</div>

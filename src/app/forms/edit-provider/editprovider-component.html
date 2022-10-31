@@ -1,0 +1,172 @@
+<div fxLayout="row wrap" fxLayoutAlign=" start" class="gene-form-wizard">
+   <mat-card fxFlex="100%">
+      <div class="gene-card-title">
+         <div fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayout="column">
+               <h4>Edit  Provider</h4>
+            </div> <span fxFlex></span>
+         </div>
+         <mat-divider></mat-divider>
+      </div>
+      <div class="gene-card-content">
+         <form [formGroup]="form">
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                  <div class="mb-3 full-wid mrgn-b-md">
+                     
+                     <ngx-select-dropdown [instanceId]="'instance1'"
+                        (change)="searchChange($event)" [multiple]="false"
+                        formControlName="category"
+                        [(ngModel)]="form.value.category"
+                        [config]="config1" [options]="categories">
+                     </ngx-select-dropdown>
+                 
+                  </div>
+               </div>
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                  <div class="mb-3 full-wid mrgn-b-md">
+                     <ngx-select-dropdown [instanceId]="'instance7'"
+                        (change)="psearchChange1($event)" [multiple]="true"
+                        formControlName="sub_category"
+                        [config]="config2"
+                        [ngClass]="{ 'is-invalid': form.status && g.sub_category.errors }"
+                        [options]="sub_categories">
+                     </ngx-select-dropdown>
+                  </div>
+               </div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                  <div class="mb-3 full-wid mrgn-b-md">
+                     <ngx-select-dropdown [instanceId]="'instance8'"
+                        (change)="searchCountry($event)" [multiple]="false"
+                        formControlName="country" 
+                        [config]="config3" [options]="countries"
+                        [ngClass]="{ 'is-invalid': form.status && g.country.errors }">
+                     </ngx-select-dropdown>
+                  </div>
+               </div>
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                  <div class="mb-3 full-wid mrgn-b-md">
+                     <ngx-select-dropdown [instanceId]="'instance9'"
+                        (change)="searchcity($event)" [multiple]="true"
+                        formControlName="city"
+                        [config]="config4" [options]="city"
+                        [ngClass]="{ 'is-invalid': form.status && g.city.errors }">
+                     </ngx-select-dropdown>
+                  </div>
+               </div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                  <div class="mb-3 full-wid mrgn-b-md">
+                     <ngx-select-dropdown [instanceId]="'instance10'"
+                        [multiple]="true" formControlName="region"
+                        [config]="config5"
+                        [options]="region"
+                        [ngClass]="{ 'is-invalid': form.status && g.region.errors }" >
+                     </ngx-select-dropdown>
+                  </div>
+               </div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                  <mat-form-field class="full-wid mrgn-b-md">
+                     <input matInput placeholder="First name" formControlName="first_name" value="form.value.first_name">
+                  </mat-form-field>
+                  <small class="gene-block" *ngIf="form.controls['first_name'].hasError('required') && form.controls['first_name'].touched"
+                     class="warn-text">
+                     You must include a first name.
+                  </small>
+                  <small class="gene-block" *ngIf="form.controls['first_name'].hasError('minlength') && form.controls['first_name'].touched"
+                     class="warn-text">
+                     Your first name must be at least 5 characters long.
+                  </small>
+                  <small class="gene-block" *ngIf="form.controls['first_name'].hasError('maxlength') && form.controls['first_name'].touched"
+                     class="warn-text">
+                     Your first name cannot exceed 10 characters.
+                  </small>
+               </div>
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                  <mat-form-field class="full-wid mrgn-b-md">
+                     <input matInput placeholder="Last name" formControlName="last_name" >
+                  </mat-form-field>
+                  <small class="gene-block" *ngIf="form.controls['last_name'].hasError('required') && form.controls['last_name'].touched"
+                     class="warn-text">
+                     You must include a last name.
+                  </small>
+                  <small class="gene-block" *ngIf="form.controls['last_name'].hasError('minlength') && form.controls['last_name'].touched"
+                     class="warn-text">
+                     Your last name must be at least 5 characters long.
+                  </small>
+                  <small class="gene-block" *ngIf="form.controls['last_name'].hasError('maxlength') && form.controls['last_name'].touched"
+                     class="warn-text">
+                     Your last name cannot exceed 10 characters.
+                  </small>
+               </div>
+
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                  <mat-form-field class="full-wid mrgn-b-md">
+                     <input matInput placeholder="Email address" formControlName="email" type="email" >
+                  </mat-form-field>
+                  <small class="gene-block" *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched"
+                     class="warn-text">
+                     You must include an email address.
+                  </small>
+                  <small class="gene-block" *ngIf="form.controls['email'].errors && !(form.controls['email'].hasError('required')) && form.controls['email'].touched"
+                     class="warn-text">
+                     You must include a valid email address.
+                  </small>
+               </div>
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                  <mat-form-field class="full-wid mrgn-b-md">
+                     <input matInput placeholder="Phone number" formControlName="phone" type="text" >
+                  </mat-form-field>
+                  <small class="gene-block" *ngIf="form.controls['phone'].hasError('required') && form.controls['phone'].touched"
+                     class="warn-text">
+                     You must include phone number.
+                  </small>
+               </div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                  <mat-form-field class="full-wid mrgn-b-md">
+                     <input matInput placeholder="Jobs" formControlName="jobs" type="text"  >
+                  </mat-form-field>
+                  <small class="gene-block" *ngIf="form.controls['jobs'].hasError('required') && form.controls['jobs'].touched"
+                     class="warn-text">
+                     You must include Jobs.
+                  </small>
+               </div>
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                  <mat-form-field class="full-wid mrgn-b-md">
+                     <input matInput placeholder="Tax Number" formControlName="tax_number" type="text" >
+                     </mat-form-field>
+               </div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                  <label class="mrgn-r-xs">Status</label>
+                  <mat-form-field appearance="outline"  >
+                     <select matNativeControl formControlName="is_active">
+                        <option value="1" [selected]="form.value.is_active" *ngIf="form.value.is_active == '1'" > Active </option>
+                        <option value="0" [selected]="form.value.is_active" *ngIf="form.value.is_active == '0'" > Deactive </option>
+                        <option value="0" *ngIf="form.value.is_active == '1'" >Deactivate</option>
+                        <option value="1" *ngIf="form.value.is_active == '0'" >Active</option>
+                     </select>
+                  </mat-form-field>
+                  <small class="gene-block" *ngIf="form.controls['is_active'].hasError('required') && form.controls['is_active'].touched" class="warn-text">You must include status.
+                  </small>
+               </div>
+            </div>
+            <div class="pad-wrap">
+               <mat-card-actions>
+                  <button mat-raised-button color="primary" type="submit"  (click)="onSubmit()">Submit</button>
+               </mat-card-actions>
+            </div>
+         </form>
+      </div>
+   </mat-card>
+</div>

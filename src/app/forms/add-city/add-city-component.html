@@ -1,0 +1,52 @@
+<div fxLayout="row wrap" fxLayoutAlign=" start" class="gene-form-wizard">
+   <mat-card fxFlex="100%">
+      <div class="gene-card-title">
+         <div fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayout="column">
+               <h4>Add New City</h4>
+            </div> <span fxFlex></span>
+         </div>
+         <mat-divider></mat-divider>
+      </div>
+      <div class="gene-card-content" style="height:30em;">
+         <form [formGroup]="form">
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                  <mat-form-field class="full-wid mrgn-b-md">
+                     <input matInput placeholder="Name" formControlName="name">
+                  </mat-form-field>
+                  <small class="gene-block" *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched"
+                     class="warn-text">
+                     You must include a Name.
+                  </small>
+                  <small class="gene-block" *ngIf="form.controls['name'].hasError('minlength') && form.controls['name'].touched"
+                     class="warn-text">
+                     Your first name must be at least 5 characters long.
+                  </small>
+                  <small class="gene-block" *ngIf="form.controls['name'].hasError('maxlength') && form.controls['name'].touched"
+                     class="warn-text">
+                     Your first name cannot exceed 200 characters.
+                  </small>
+               </div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                  <div class="mb-3 full-wid mrgn-b-md">
+                     <ngx-select-dropdown [instanceId]="'instance8'"
+                     [multiple]="false"
+                        formControlName="country" [(ngModel)]="form.value.country"
+                        [config]="pconfig3" [options]="pcountries"
+                        [ngClass]="{ 'is-invalid': form.status && g.country.errors }">
+                     </ngx-select-dropdown>
+                  </div>
+               </div>
+            </div>
+            <div class="pad-wrap">
+               <mat-card-actions>
+                  <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid" (click)="onSubmit()">Submit</button>
+               </mat-card-actions>
+            </div>
+         </form>
+      </div>
+   </mat-card>
+</div>

@@ -1,0 +1,41 @@
+
+<div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+   <mat-card>
+      <div class="gene-card-title">
+         <div fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayout="column">
+               <h4>Cities</h4>
+            </div> <span fxFlex></span>
+            <button mat-raised-button color="primary"  (click)="addCity()">Add a City</button>
+         </div>
+         <mat-divider></mat-divider>
+      </div>
+      <div class="gene-card-content pad-t-none">
+         <div class="table-responsive">
+            <table class="table table-hover table-middle th-fw-light mb-0">
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Country Name</th>
+                     <th>Actions</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr *ngFor="let data of reviews">
+                     <td>{{data.name}}</td>
+                     <td>{{data.country_name}}</td>
+                     <td>
+                        <button mat-icon-button matTooltip="Click to Edit" class="iconbutton" color="primary" (click)="editCity(data.id)">
+                           <mat-icon aria-label="Edit">edit</mat-icon>
+                         </button>
+                       <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="warn" (click)="deleteCity(data.id)">
+                           <mat-icon aria-label="Delete">delete</mat-icon>
+                         </button>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </mat-card>
+</div>
